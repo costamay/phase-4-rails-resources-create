@@ -5,6 +5,15 @@ class BirdsController < ApplicationController
     birds = Bird.all
     render json: birds
   end
+  
+  # POST /birds
+  def create
+    bird = Bird.create(
+      name: params[:name],
+      species: params[:species]
+    )
+    render json: bird, status: :created
+  end
 
   # GET /birds/:id
   def show
